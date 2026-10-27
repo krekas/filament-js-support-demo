@@ -17,25 +17,26 @@ const statusClasses: Record<EventStatusKey, string> = {
     cancelled: 'bg-red-100 text-red-800 dark:bg-red-500/20 dark:text-red-300',
 };
 
-const dateFormatter = new Intl.DateTimeFormat('en-GB', {
-    weekday: 'short',
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-});
+function formatStartsAt(startsAt: string | null, timeZone: string): string {
+    const date = startsAt ? new Date(startsAt) : null;
 
-function formatStartsAt(startsAt: string | null): string {
-    if (!startsAt) {
+    if (!date || Number.isNaN(date.getTime())) {
         return 'Date to be announced';
     }
 
-    const date = new Date(startsAt);
-
-    return Number.isNaN(date.getTime())
-        ? 'Date to be announced'
-        : dateFormatter.format(date);
+    try {
+        return new Intl.DateTimeFormat('en-GB', {
+            weekday: 'short',
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+            timeZone,
+        }).format(date);
+    } catch {
+        return date.toLocaleString('en-GB');
+    }
 }
 
 function CardFrame({ href, children }: { href?: string; children: ReactNode }) {
@@ -85,7 +86,7 @@ export default function EventCard({ event, href }: EventCardProps) {
                     {event.name || 'Untitled event'}
                 </h3>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                    {formatStartsAt(event.startsAt)}
+                    {formatStartsAt(event.startsAt, event.timezone)}
                 </p>
                 {venue && (
                     <p className="text-sm text-zinc-500 dark:text-zinc-400">

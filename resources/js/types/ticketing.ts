@@ -45,6 +45,8 @@ export type EventSummary = {
     venueName: string | null;
     venueCity: string | null;
     startsAt: string | null;
+    /** The timezone the event's start time is shown in, so the server and browser agree. */
+    timezone: string;
     posterUrl: string | null;
     fromPrice: number | null;
     status: EventStatusKey;

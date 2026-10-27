@@ -7,6 +7,8 @@ type SelectionSummaryProps = {
     selectedSeats: readonly string[];
     prices?: Readonly<Prices>;
     isComp?: boolean;
+    /** Prices already charged per seat key, which win over the current tier prices. */
+    seatPrices?: Readonly<Record<string, number>>;
     emptyMessage?: string;
 };
 
@@ -15,6 +17,7 @@ export default function SelectionSummary({
     selectedSeats,
     prices = {},
     isComp = false,
+    seatPrices = {},
     emptyMessage = 'No seats selected yet. Pick seats on the map.',
 }: SelectionSummaryProps) {
     const details = seatDetailsMap(layout, prices);
@@ -24,7 +27,7 @@ export default function SelectionSummary({
         return {
             key,
             label: seat ? describeSeat(seat) : key,
-            price: isComp ? 0 : (seat?.price ?? 0),
+            price: seatPrices[key] ?? (isComp ? 0 : (seat?.price ?? 0)),
         };
     });
     const total = seats.reduce((sum, seat) => sum + seat.price, 0);
