@@ -15,11 +15,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
+        // Filament admin login: admin@admin.com / password
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'admin@admin.com',
+        ]);
+
+        $this->call([
+            VenueSeeder::class,
+            EventSeeder::class,
+            BookingSeeder::class,
         ]);
     }
 }
