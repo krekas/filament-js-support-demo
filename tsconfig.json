@@ -108,7 +108,16 @@
         // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
         "skipLibCheck": true /* Skip type checking all .d.ts files. */,
         "paths": {
-            "@/*": ["./resources/js/*"]
+            "@/*": ["./resources/js/*"],
+            "@filament/forms/js-field": [
+                "./vendor/filament/forms/resources/js/types/js-field.d.ts"
+            ],
+            "@filament/schemas/js-component": [
+                "./vendor/filament/schemas/resources/js/types/js-component.d.ts"
+            ],
+            "@filament/widgets/js-widget": [
+                "./vendor/filament/widgets/resources/js/types/js-widget.d.ts"
+            ]
         },
         "jsx": "react-jsx"
     },
