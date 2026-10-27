@@ -14,6 +14,7 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/js/app.tsx',
                 'resources/css/filament/admin/theme.css',
+                'resources/js/filament/forms/components/seat-picker.tsx',
             ],
             refresh: true,
             fonts: [

@@ -6,14 +6,14 @@ export type Seat = {
 
 export type Row = {
     label: string;
-    seats: Seat[];
+    seats: readonly Seat[];
 };
 
 export type Section = {
     key: string;
     name: string;
     tier: string;
-    rows: Row[];
+    rows: readonly Row[];
 };
 
 export type Stage = {
@@ -28,7 +28,7 @@ export type VenueLayout = {
     width: number;
     height: number;
     stage: Stage | null;
-    sections: Section[];
+    sections: readonly Section[];
 };
 
 /** Tier key → price in cents, e.g. `{ premium: 8500, standard: 5500 }`. */
