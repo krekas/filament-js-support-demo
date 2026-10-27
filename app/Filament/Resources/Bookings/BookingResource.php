@@ -20,6 +20,8 @@ class BookingResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedTicket;
 
+    protected static ?int $navigationSort = 2;
+
     protected static ?string $recordTitleAttribute = 'reference';
 
     public static function form(Schema $schema): Schema

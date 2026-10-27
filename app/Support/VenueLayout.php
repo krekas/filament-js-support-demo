@@ -67,6 +67,14 @@ class VenueLayout
     }
 
     /**
+     * @return list<string>
+     */
+    public function tiers(): array
+    {
+        return array_values(array_unique(array_column($this->sections(), 'tier')));
+    }
+
+    /**
      * @return list<Section>
      */
     public function sections(): array

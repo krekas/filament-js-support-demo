@@ -15,6 +15,7 @@ export default defineConfig({
                 'resources/js/app.tsx',
                 'resources/css/filament/admin/theme.css',
                 'resources/js/filament/forms/components/seat-picker.tsx',
+                'resources/js/filament/schemas/components/event-card-preview.tsx',
             ],
             refresh: true,
             fonts: [
