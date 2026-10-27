@@ -16,6 +16,7 @@ export default defineConfig({
                 'resources/css/filament/admin/theme.css',
                 'resources/js/filament/forms/components/seat-picker.tsx',
                 'resources/js/filament/schemas/components/event-card-preview.tsx',
+                'resources/js/filament/widgets/seat-occupancy.tsx',
             ],
             refresh: true,
             fonts: [
